@@ -1,0 +1,46 @@
+
+
+<div class="container" style="margin-bottom: 50px;background-color: powderblue; " >
+    <div class="row" style="margin-bottom: 50px; ">
+      <div class="col-sm-6" style="margin-top: 100px;">
+          <h2 style="text-align: center;font-weight: bold;">UserLogin</h2>
+          <form #userloginform='ngForm' (ngSubmit)="loginuser(userloginform);" >
+            <div>
+               <label for="exampleInputEmail1" class="form-label">Email address:</label>
+               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Email Address" name="email"  ngModel email required #email="ngModel">
+               <small class="form-text text-muted" *ngIf= "email.touched && !email.valid ">please enter email address</small>
+            </div>
+            <div>
+               <label for="exampleInputPassword1" class="form-label">Password:</label>
+               <input type="password" class="form-control" id="exampleInputPassword1"  placeholder="Enter Password" name="password" ngModel required #password="ngModel">
+               <small class="form-text text-muted" *ngIf= "password.touched && !password.valid ">please enter Password</small>
+            </div>
+            <div>
+               <h6 routerLink="/signup" style="cursor: pointer;color: blue;margin-top: 10px;margin-left: 280px;" >No Account ? click to signup now!</h6>
+            </div>
+            <div>
+               <button class="text-center" type="submit" class="btn btn-primary" routerLink="/alluser-screen/screen-buttons"  style="cursor: pointer;margin-bottom: 50px;" [disabled]=!userloginform.valid >Login</button>   
+            </div> 
+            <!-- routerLink="/alluser-screen/screen-buttons" -->
+         </form>
+      </div>
+      <div class="col-sm-6 " style="margin-top: 100px;">
+        <h2 style="text-align: center;font-weight: bold;">Admin Login</h2>
+        <form  #adminloginform='ngForm' (ngSubmit)="loginadmin(adminloginform);">
+         <div>
+            <label for="exampleInputEmail1" class="form-label">Email address:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Email Address" name="email"  ngModel email required #email="ngModel">
+            <small class="form-text text-muted" *ngIf= "email.touched && !email.valid ">please enter email address</small>
+         </div>
+         <div>
+            <label for="exampleInputPassword1" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="exampleInputPassword1"  placeholder="Enter Password" name="password" ngModel required #password="ngModel">
+            <small class="form-text text-muted" *ngIf= "password.touched && !password.valid ">please enter Password</small>
+         </div>
+         <div style="margin-top:20px">
+            <button routerLink="/admin-screen" type="button" class="btn btn-primary" style="cursor: pointer;margin-top: 16px;margin-bottom: 50px;"  [disabled]=!adminloginform.valid >Login</button>
+         </div>
+        </form>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container" style="background-color: antiquewhite;">
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+      <div class="col-sm-6" style="margin-top: 100px;">
+          <h2 style="text-align: center;font-weight: bold;">Signup</h2>
+          <form #userloginform='ngForm' (ngSubmit)="loginuser(userloginform);" >
+            <div>
+               <label for="exampleInputEmail1" class="form-label">Email address:</label>
+               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Enter Email Address" name="email"  ngModel email required #email="ngModel">
+               <small class="form-text text-muted" *ngIf= "email.touched && !email.valid ">please enter email address</small>
+            </div>
+            <div>
+               <label for="exampleInputPassword1" class="form-label">Password:</label>
+               <input type="password" class="form-control" id="exampleInputPassword1"  placeholder="Enter Password" name="password" ngModel required #password="ngModel">
+               <small class="form-text text-muted" *ngIf= "password.touched && !password.valid ">please enter Password</small>
+            </div>
+            
+            <div style="margin-top: 5px;">
+               <button class="text-center" type="submit" class="btn btn-primary"  style="cursor: pointer;margin-bottom: 100px;" [disabled]=!userloginform.valid >Submit</button>   
+            </div> 
+            <!-- routerLink="/alluser-screen/screen-buttons" -->
+         </form>
+      </div>
+      <div class="col-sm-3">
+
+     </div>
+
+      
+    </div>
+   
+  </div>

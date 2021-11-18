@@ -1,0 +1,441 @@
+<!-- 
+
+<div class="container-fluid mt-3 ">
+    <div class="row">
+      <div class="col-sm-4 " style="background-color:lightgray;">
+        <form style="margin-top: 40px;margin-bottom: 40px;">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Movie Name:</label>
+              <input type="text" class="form-control" id=""  placeholder="Enter Movie Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Movie Url:</label>
+              <input type="text" class="form-control" id="" placeholder="Enter Movie Url">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Screen Id:</label>
+                <input type="number" class="form-control" id="" placeholder="Enter ScreenId">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Movie Id:</label>
+                <input type="number" class="form-control" id="" placeholder="Enter MovieId">
+            </div>
+            <button type="submit" class="btn btn-success pull-right"  style="margin-right: 5px;">Submit/Update</button>
+            <button type="delete" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+      <div class="col-sm-8 " style="background-color:lightblue;" >
+        <div class="card" style="width: 18rem;margin-top: 40px;margin-bottom: 40px;">
+          <ng-container *ngFor= "let info of MoviesList"> 
+            <img class="card-img-top" src="{{info.ImageUrl}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 style="font-size: small;">{{info.MovieId}} </h5>
+              <h5 class="card-title">{{info.MovieName}}</h5>
+              <h5 class="card-title">{{info.Screenid}}</h5>
+              <a href="#" class="btn btn-primary">Book</a>
+            </div>
+        </ng-container>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  <!-- copied code -->
+
+
+  <nav class="navbar navbar-expand-md py-3 " style= "background-color:#333545;"  >
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="#">
+      <img src="../../assets/imgbin_bookmyshow-visakhapatnam-ticket-company-coupon-png.png" alt="logo" style="width:100px;">
+    </a>
+
+    <form class="form-inline" action="C:/Users/Reliance%20digital/bookmyshow.html#">
+        <input class="form-control mr-20" type="text" placeholder="Search for Movies,Plays..">
+        
+      </form>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
+        <span class="navbar-toggler-icon" ></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar"style="margin: left 5px;">
+        <ul class="navbar-nav ml-auto">
+          
+         
+          <li class="nav-item dropdown dropleft"  >
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style= "color:white;">
+                  Location
+                </a>
+    
+                  <div class="dropdown-menu ">
+                    <a class="dropdown-item" href="#">Hyderabad</a>
+                    <a class="dropdown-item" href="#"> Banglore</a>
+                    <a class="dropdown-item" href="#"> Mumbai</a>
+                    <a class="dropdown-item" href="#" >chennai</a>
+                    <a class="dropdown-item" href="#"> pune</a>
+                    <a class="dropdown-item" href="#"> kolkota</a>
+                    <a class="dropdown-item" href="#" >kochi</a>
+                  </div>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="" style= "color:white;"><button type="button" class="btn btn-primary btn-sm">Sign Out</button></a>
+              </li>
+        </ul>
+      </div>  
+    </nav>
+    
+    
+
+  <nav class="navbar navbar-expand-sm  " style="background-color: #222539;">
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a style="color: white;" class="nav-link" href="#">Movies</a>
+      </li>
+      <li class="nav-item">
+        <a  style="color: white;" class="nav-link" href="#">Stream</a>
+      </li>
+      <li class="nav-item">
+        <a  style="color: white;" class="nav-link" href="#">Events</a>
+      </li>
+      <li class="nav-item">
+        <a  style="color: white;" class="nav-link" href="#">Plays</a>
+      </li>
+      <li class="nav-item">
+        <a  style="color: white;" class="nav-link" href="#">Sports</a>
+      </li>
+      <li class="nav-item">
+        <a  style="color: white;" class="nav-link" href="#">Activities</a>
+      </li>
+      <li class="nav-item">
+        <a  style="color: white;" class="nav-link" href="#">Fanhood</a>
+      </li>
+      <li class="nav-item"   >
+        <a  style="color: white;" class="nav-link" href="#">Buzz</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item"   >
+            <a  style="color: white;" class="nav-link" href="#">ListYourShow</a>
+          </li>
+         <li class="nav-item"   >
+        <a  style="color: white;" class="nav-link" href="#">Corporates</a>
+      </li>
+      <li class="nav-item"   >
+        <a  style="color: white;" class="nav-link" href="#">Offers</a>
+      </li>
+      <li class="nav-item"   >
+        <a  style="color: white;" class="nav-link" href="#">GiftCards</a>
+      </li>
+    </ul>
+  </nav>
+<!-- actualcode -->
+<div class="container-fluid mt-3 " >
+  <div class="row">
+    <div class="col-sm-4 " style="background-color:lightgray;" >
+      <label style="font-weight: bold;">Add Movie:</label>
+      <form style="margin-top: 10px;margin-bottom: 40px;" #moviedetailsform='ngForm' (ngSubmit)="moviedetails(moviedetailsform); "  >
+          <div class="form-group">
+            <label for="exampleInputEmail1">Movie Name:</label>
+            <input type="text" class="form-control" id=""  placeholder="Enter Movie Name" name="MovieName" ngModel >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Movie Url:</label>
+            <input type="text" class="form-control" id="" placeholder="Enter Movie Url" name="ImageUrl" ngModel>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputPassword1">Screen Id:</label>
+              <input type="number" class="form-control" id="" placeholder="Enter ScreenId" name="ScreenId" ngModel>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputPassword1">Movie Id:</label>
+              <input type="number" class="form-control" id="" placeholder="Enter MovieId" name = "MovieId" ngModel>
+          </div>
+          <button type="submit" class="btn btn-success pull-right"  style="margin-right: 5px;">Add</button>
+      </form>
+      <!-- deleteform -->
+      <!-- <label style="font-weight: bold;">Delete Movie:</label>
+      <form style="margin-top: 10px;margin-bottom: 40px;" #moviedeleteform='ngForm' (ngSubmit)="moviedelete(moviedeleteform);">
+        <div class="form-group">
+            <label for="exampleInputPassword1">Movie Id:</label>
+            <input type="number" class="form-control" id="" placeholder="Enter MovieId" name = "MovieId" ngModel>
+        </div>
+        <button type="submit" class="btn btn-danger pull-right"  style="margin-right: 5px;">Delete</button>
+      </form> -->
+    <!-- Updateform -->
+    <label style="font-weight: bold;">Update Movie:</label>
+    <form style="margin-top: 10px;margin-bottom: 40px;" #movieupdateform='ngForm' (ngSubmit)="movieupdate(movieupdateform);"  >
+      <div class="form-group">
+        <label for="exampleInputEmail1">Movie Name:</label>
+        <input type="text" class="form-control" id=""  placeholder="Enter Movie Name" name="MovieName" ngModel >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Movie Url:</label>
+        <input type="text" class="form-control" id="" placeholder="Enter Movie Url" name="ImageUrl" ngModel>
+      </div>
+      <div class="form-group">
+          <label for="exampleInputPassword1">Screen Id:</label>
+          <input type="number" class="form-control" id="" placeholder="Enter ScreenId" name="ScreenId" ngModel>
+      </div>
+      <div class="form-group">
+          <label for="exampleInputPassword1">Movie Id:</label>
+          <input type="number" class="form-control" id="" placeholder="Enter MovieId" name = "MovieId" ngModel>
+      </div>
+      <button type="submit" class="btn btn-primary pull-right"  style="margin-right: 5px;">Update</button>
+    </form>
+    <img src="../../assets/popcorn.jpg">
+    <img src="../../assets/audience.jpg " >
+    <img src="../../assets/bms-buy-one-get-one-free.png " >
+    <img src="../../assets/bookmyshow-review-1.jpg " >
+    </div>
+    <div class="col-sm-8 " style="background-color:lightblue;" >
+      <!-- <div class="card row" style="width: 18rem;margin-top: 40px;margin-bottom: 40px;"> -->
+        <!-- <ng-container class="col-sm-3" *ngFor= "let info of MoviesList"> 
+        <img class="card-img-top" src="{{info.ImageUrl}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 style="font-size: small;">{{info.MovieId}} </h5>
+            <h5 class="card-title">{{info.MovieName}}</h5>
+            <h5 class="card-title">{{info.Screenid}}</h5>
+            <a href="#" class="btn btn-primary">Book</a>
+          </div>
+      </ng-container> -->
+      <div class="container" >
+        <div class="row" style="height: 20px;">
+            <ng-container *ngFor= "let info of MoviesList"> 
+            <div style="margin-right: 20px; margin-left: 20px; margin-top: 30px;padding: 20px;" class="card col-md-3">
+              <img style="width: 150px;margin-left: 5px;" src="{{info.ImageUrl}}" alt="Images">
+              <h5 style="font-size: small;margin-left: 10px;">{{info.MovieName}} </h5>
+              <p><strong>Screen Id:</strong>{{info.ScreenId}}</p>
+              <button class="btn btn-primary" style="vertical-align: bottom;" >BooK Tickets</button>
+            </div>
+            </ng-container>
+        </div>
+      </div>  
+     
+     
+    </div>
+  </div>
+</div>
+<!-- actualcode -->
+<nav class="navbar navbar-expand-md py-3 " style= "background-color:#333545;"  >
+    <ul class="navbar-nav ">
+      <li class="nav-item">
+        <a style="color:white;" class="nav-link" href="#">List your Show</a>
+        </li>
+        <li class="nav-item">
+            <a style="color:white;" class="nav-link" href="#">Got a show,event,activity or Great experience?Partner withus and get listed on Bookmyshow</a>
+        </li>
+        <li>
+        <button Style="color:white;padding-left: 20px;margin-left: 100px;text-decoration: none; " type="button" class="btn btn-outline-primary"><a href="file:///C:/Users/Reliance%20digital/Movie_Seat_Booking_In_JavaScript_With_Source_code/index.html" target="_blank">Contact Now</a></button>
+       </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid" style="background-color: #404043;padding-top: 20px;padding-bottom:20px;">
+
+    <div class="row ">
+      <div class="col-sm-4">
+        <img  src="../../assets/customers-icon-35920.png" alt="logo" style="width:60px;margin-left: 60px;"><br>
+        <a style="color: white;text-decoration: none;font-family: sans-serif;" href="#" >24/7 CUSTOMER CARE</a>
+      </div>
+      <div class="col-sm-4">
+        <img src="../../assets/—Pngtree—cartoon movie movie ticket illustration_4624597.png" alt="logo" style="width:60px;margin-left: 120px;"><br>
+        <a style="color: white;text-decoration: none;font-family: sans-serif;" href="#" >RESEND BOOKING CONFIRMATION</a>
+      </div>
+      <div class="col-sm-4">
+        <img src="../../assets/newsletter-icon-37212.png" alt="logo" style="width:60px;margin-left: 60px;"><br>
+        <a style="color: white;text-decoration: none;font-family: sans-serif;" href="#" >SUBSCRIBE TO THE NEWSLETTER</a>
+      </div>
+    </div>  
+     
+  </div>   
+
+  <div class="container-fluid"style="background-color: #404043;padding-top: 20px;padding-bottom:20px;">
+
+    <div class="row ">
+        <div class="col-sm " style="padding-top:10px;">
+          <a style="color: white ;text-decoration: none;" href="#" ><small>Online Movie Ticket Booking Mumbai</small></a>   
+          <a style="color: white ;text-decoration: none;" href="#" ><small>| Online Movie Ticket Booking Hyderabad |</small></a>
+          <a style="color: white ;text-decoration: none;" href="#" ><small> Online Movie Ticket Booking Pune |</small></a>
+          <a style="color: white ;text-decoration: none;" href="#" ><small>Online Movie Ticket Booking Bangalore |</small></a>
+          <a style="color: white ;text-decoration: none;" href="#" ><small> Online Movie Ticket Booking Chennai |</small></a>
+          <a style="color: white ;text-decoration: none;" href="#" ><small> Online Movie Ticket Booking Delhi |</small></a>
+          <a style="color: white ;text-decoration: none;" href="#" ><small> Online Movie Ticket Booking Kolkata |</small></a>
+          <a style="color: white ;text-decoration: none;" href="#" ><small>Online Movie Ticket Booking Noida |</small></a>
+          <a style="color: white ;text-decoration: none;" href="#" ><small> Online Movie Ticket Booking Ahmedabad |</small></a>
+        </div>
+      </div>
+  </div>
+
+  <div class="container-fluid" style="background-color: #404043;padding-top: 20px;">
+
+    <div class="row ">
+      <div class="col-sm-3">
+        <h6  style="color: white ;">BEST LANGUAGE GENRE MOVIES</h6>
+        <a style="color: white ;text-decoration: none;" href="#" ><small> Hindi Comedy Movies      </small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small> | Hindi Action Movies |</small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small> English Animated Movies | </small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small>  English Fantasy Movies | </small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small> English Comedy Movies |</small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small> English Action Movies |</small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small>  Tamil Action Movies |</small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small> Tamil Comedy Movies |</small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small> Telugu Action Movies |</small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small> Gujarati Comedy Movies |</small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small> Marathi Comedy Movies |</small></a>
+        <a style="color: white ;text-decoration: none;" href="#" ><small>Hindi Animated Movies |</small></a>
+      </div>
+      <div class="col-sm-3">
+        <h6 style="color: white ;">MOVIES BY GENRE</h6>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>Best Action Movies |  </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Best Comedy Movies |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Best Thriller Movies | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Best Adult Movies | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Best Suspense Movies |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>Best Fantasy Movies | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Best Neo-Noir Movies | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Best Crime Movies |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Best Horror Movies |</small></a>
+     </div>
+     <div class="col-sm-3">
+      <h6  style="color: white ;">POPULAR MOVIES BY LANGUAGE</h6>
+     <a style="color: white ;text-decoration: none;" href="#" ><small>Popular Hindi Movies |  </small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small>   Popular English Movies |</small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small> Popular Marathi Movies | </small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small> Popular Bengali Movies |</small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small>   Popular Tamil Movies | </small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small> Popular Telugu Movies | </small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small>  Popular Malayalam Movies | </small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small>Popular Bhojpuri Movies |</small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small> Popular Kannada Movies |</small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small>   Popular Punjabi Movies |  </small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small> Popular Gujarati Movies | </small></a>
+     <a style="color: white ;text-decoration: none;" href="#" ><small>  Popular Sindhi Movies</small></a>
+   </div>
+   <div class="col-sm-3">
+    <h6  style="color: white ;">MOVIE REVIEWS</h6>
+   <a style="color: white ;text-decoration: none;" href="#" ><small>Trending Articles   </small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small>  Latest News on Movies, Events, Plays & Sports | </small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small>  Anupama Chopra Movie Review |  </small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small> Film Reviews |</small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small>   Guest BloggingTrending Articles |  </small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small> Latest News on Movies, Events, Plays & Sports | </small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small>  Rajeev Masand Movie Reviews | </small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small> Anupama Chopra Movie Review |</small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small>|Rajeev Masand Movie Reviews |</small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small>  Film Reviews | </small></a>
+   <a style="color: white ;text-decoration: none;" href="#" ><small>Guest Blogging | </small></a>
+ </div>
+</div>
+
+<div class="container-fluid" style="background-color: #404043;padding-top: 20px;">
+    <div class="row ">
+     <div class="col-sm-3">
+       <h6  style="color: white ;">THINGS TO DO IN HYDERABAD</h6>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>Food Events in Hyderabad |    </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Family Tours in Hyderabad |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Amusement Parks in Hyderabad |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Gaming Events in Hyderabad |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Nightlife Events in Hyderabad | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Places To Visit in Hyderabad |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Tourist Attractions in Hyderabad |</small></a>
+     </div>
+     <div class="col-sm-3">
+       <h6  style="color: white ;">EVENTS TICKETS BOOKING ONLINE</h6>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>Upcoming Events in Mumbai |    </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Upcoming Events in Delhi |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Upcoming Events in Bengaluru |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Upcoming Events in Chennai |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Upcoming Events in Hyderabad | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Upcoming Events in Pune |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Upcoming Events in Noida |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>   Upcoming Events in Ahmedabad</small></a>
+     </div>
+     <div class="col-sm-3">
+       <h6  style="color: white ;">MOVIES, CINEMAS & CELEBRITY</h6>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>Latest Upcoming Movies |    </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Best Now Showing Movies |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Cinemas & Theatres |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Movie Stars & Celebrities |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Cinema Chains | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> All regions Cinemas  </small></a>
+     </div>
+     <div class="col-sm-3">
+       <h6  style="color: white ;">ARCHIVED COLLECTION</h6>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>Old Movies |  
+       </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Past Events |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Classic Sports Events |</small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>   Old Theatre Plays | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>   Best Movies 2016 | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>  Best Of 2017 | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small>   Best Of 2018 | </small></a>
+       <a style="color: white ;text-decoration: none;" href="#" ><small> Best Of 2019 </small></a>
+     </div>
+   </div>
+</div>
+
+    <!--last row start-->
+    <div class="container-fluid" style="background-color: #404043;padding-top: 20px;">
+        <div class="row ">
+         <div class="col-sm-3">
+           <h6  style="color: white ;">BOOKMYSHOW APP</h6>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>BMS Ticketing iOS App |    </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small> BMS Ticketing Android App </small></a>
+         </div>
+         <div class="col-sm-3">
+           <h6  style="color: white ;">BOOKMYSHOW NEWS</h6>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>Buzz |  </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small> Press Release |</small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>Press Coverage | </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>  Current Openings |</small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>   Contact Us | </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small> About Us  </small></a>
+          </div>
+         <div class="col-sm-3">
+           <h6  style="color: white ;">EXCLUSIVES</h6>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>Superstar    </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small> BookASmile |</small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>  Corporate Vouchers |</small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>  Gift Cards | </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>  My Coupons |  </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small> Box Office Collection | </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small> NEW Watch Guide  </small></a>
+         </div>
+         <div class="col-sm-3">
+           <h6  style="color: white ;">HELP</h6>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>Sitemap | </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>FAQs | </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>  Terms and Conditions |</small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>   Privacy Policy | </small></a>
+           <a style="color: white ;text-decoration: none;" href="#" ><small>   Report Content </small></a>
+         </div>
+       </div>
+   </div>
+   
+   <hr>
+
+   <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"  style="margin-top: 10px;margin-left: 30px;">
+        <a href="https://twitter.com/"><img src="../../assets/15-2-twitter-png-picture.png" alt="15-2-twitter-png-picture" style ="width:50px;height:50px;"></a>
+        <a href="https://linkedin.com/"><img src="../../assets/10-2-linkedin-png-clipart.png" alt="10-2-linkedin-png-clipart" style ="width:50px;height:50px;"></a>
+        <a href="https://youtube.com/"><img src="../../assets/6-2-youtube-png-picture.png" alt="6-2-youtube-png-picture" style ="width:50px;height:50px;"></a>
+        <a href="https://instagram.com/"><img src="../../assets/2-2-instagram-png-picture.png" alt="2-2-instagram-png-picture" style ="width:50px;height:50px;"></a>
+        <a href="https://facebook.com/"><img src="../../assets/62588-and-icons-facebook-computer-black-logo-white.png" alt="62588-and-icons-facebook-computer-black-logo-white" style ="width:50px;height:50px;"></a> 
+      </div>
+      <div class="col-sm-4"></div>
+    </div>  
+  </div>
+  
+  <p style="text-align:center;margin-top: 10px; color: white;" ><small>© 1999-2021 Bookmyshow, Inc. All rights reserved.</small></p>
+  <p style="text-align:center;margin-top: 10px; color:white;" ><small> The content and images used on this site are copyright protected and copyrights vests with the respective owners. The usage of the content and images on this website is intended to promote the works and no endorsement of the artist shall be implied. Unauthorized use is prohibited and punishable by law.</small></p>
+
+
+
+
+
+
